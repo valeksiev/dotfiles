@@ -1,0 +1,38 @@
+modules = ['ngRoute', 'ngResource', 'angularFileUpload']
+
+Application = window.Application = angular.module('edhub', modules)
+
+#
+# When the document is ready start bootstraping the Angular
+#
+angular.element(document).ready(() ->
+  element = angular.element("html")
+
+  #
+  # Block bootstraping
+  #
+  window.name = 'NG_DEFER_BOOTSTRAP!'
+  angular.bootstrap(element[0], ['edhub'])
+
+  #
+  # Fetch current account if exist
+  #
+  $.ajax({
+    type: 'GET'
+    url: '/get_current_user.json'
+  }).done((response) ->
+    #
+    # If the response is valid and it's ok assign it to window scope
+    #
+    if _.has(response, 'current_user') 
+      window.current_user = response.current_user
+    #
+    # Resuome booting AngularJS
+    #
+    angular.resumeBootstrap()
+  ).fail((response) ->
+    console.log 'Could not fetch current_account'
+    angular.resumeBootstrap()
+  )
+
+)

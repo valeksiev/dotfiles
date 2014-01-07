@@ -1,0 +1,45 @@
+<doctype html>
+<html>
+<head>
+    <title>test</title>
+    <script type="text/javascript" src="angular.min.js"></script>
+    <script type="text/javascript" src="js.js"></script>
+
+    <style>
+
+        .output, input {
+            width: 200px;
+            height: 30px;
+            line-height: 30px;
+            padding: 0 10px;
+        }
+
+        .output {
+            box-sizing: border-box;
+            background-color: #ccc;
+            border: 1px solid grey;
+        }
+
+        table {
+            border-collapse: collapse;
+        }
+
+    </style>
+</head>
+<body ng-app="sheet" ng-controller="spreadSheetCtrl">
+
+    <div>
+        <table>
+            <tr ng-repeat="row in rows">
+                <td ng-repeat="col in columns">
+                    <input ng-model="cells[col+row]"></input>
+                    <div ng-bind="compute(col+row)" class="output"></div>
+                </td>
+            </tr>
+        </table>
+    </div>
+
+    <youtube src="http://www.youtube.com/embed/nA0_U3jBdXk"></youtube>
+
+</body>
+</html>

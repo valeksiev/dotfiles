@@ -1,0 +1,74 @@
+Application.config(['$routeProvider', '$locationProvider', ($routeProvider, $locationProvider, $rootScope) ->
+
+  #
+  # Turn on html5mode
+  #
+  $locationProvider.html5Mode(false)
+
+
+  assets_base = '/assets/controllers'
+  module = asset_prefix = ''
+  if window.current_user
+    asset_prefix = window.current_user.type + '/'
+    module = window.current_user.type + '.'
+
+  $routeProvider
+
+    #
+    # Default
+    #
+    .when("/", auth: true, templateUrl: "#{assets_base}/people/manage.html", controller: 'ManageCtrl' )
+
+    #
+    # Sign Up / Sign In / Sign Out
+    #
+    .when('/sign_up/:code',    templateUrl: "#{assets_base}/sign_up/index.html",     controller: 'SignUpCtrl')
+    .when('/sign_up',          templateUrl: "#{assets_base}/sign_up/index.html",     controller: 'SignUpCtrl')
+    .when('/thank-you/:token', templateUrl: "#{assets_base}/sign_up/thank_you.html")
+    .when('/sign_in',          templateUrl: "#{assets_base}/sign_in/index.html",     controller: 'SignInCtrl')
+    .when('/sign_out', auth: true, templateUrl: "#{assets_base}/sign_out/index.html", controller: 'SignOutCtrl')
+
+    #
+    # Activate Account
+    #
+    .when("/activate/:token", templateUrl: "#{assets_base}/sign_up/activate.html", controller: 'ActivateCtrl')
+
+    #
+    # Dashboard
+    #
+    .when('/dashboard',            auth: true, templateUrl: "#{assets_base}/dashboard/clear_view.html", controller: 'ClearViewCtrl')
+    .when('/dashboard/clear_view', auth: true, templateUrl: "#{assets_base}/dashboard/clear_view.html", controller: 'ClearViewCtrl')
+
+    #
+    # People
+    #
+    .when("/people",                    auth: true, templateUrl: "#{assets_base}/people/manage.html",  controller: 'ManageCtrl' )
+    .when("/people/manage",             auth: true, templateUrl: "#{assets_base}/people/manage.html",  controller: 'ManageCtrl' )
+    .when("/people/manage/profile/:id", auth: true, templateUrl: "#{assets_base}/people/profile.html", controller: 'ManageProfileCtrl')
+    .when("/people/upload",             auth: true, templateUrl: "#{assets_base}/people/upload.html",  controller: 'UploadCtrl' )
+    .when("/people/moodle",             auth: true, templateUrl: "#{assets_base}/people/moodle.html",  controller: 'MoodleCtrl' )
+
+    #
+    # Apps
+    #
+    .when('/apps',                     auth: true, templateUrl: "#{assets_base}/apps/#{asset_prefix}apps.html", controller: "#{module}AppsCtrl")
+    .when('/apps/add',                 auth: true, templateUrl: "#{assets_base}/apps/#{asset_prefix}app_add.html", controller: "#{module}AppAddCtrl")
+    .when('/apps/:app_id/tech_config', auth: true, templateUrl: "#{assets_base}/apps/#{asset_prefix}app_tech_config.html", controller: "#{module}AppConfigCtrl")
+    .when('/apps/launch_pad',          auth: true, templateUrl: "#{assets_base}/apps/#{asset_prefix}launch_pad.html", controller: "#{module}LaunchPadCtrl")
+    .when('/apps/library',             auth: true, templateUrl: "#{assets_base}/apps/#{asset_prefix}library.html",    controller: "#{module}LibraryCtrl")
+    .when('/apps/organize',             auth: true, templateUrl: "#{assets_base}/apps/#{asset_prefix}library.html",    controller: "#{module}LibraryCtrl")
+
+    #
+    # Account
+    #
+    .when('/account',               auth: true, templateUrl: "#{assets_base}/account/profile_edit.html",  controller: 'AccountProfileCtrl')
+    .when('/account/profile',       auth: true, templateUrl: "#{assets_base}/account/profile_edit.html",  controller: 'AccountProfileCtrl')
+    .when('/account/school',        auth: true, templateUrl: "#{assets_base}/account/school_edit.html",   controller: 'AccountSchoolCtrl')
+    .when('/account/notifications', auth: true, templateUrl: "#{assets_base}/account/notifications.html", controller: 'AccountNotificationsCtrl')
+    .when('/account/roles',         auth: true, templateUrl: "#{assets_base}/account/roles.html",         controller: 'AccountRolesCtrl')
+
+    #
+    # Not Found
+    #
+    .otherwise redirectTo: '/'
+])

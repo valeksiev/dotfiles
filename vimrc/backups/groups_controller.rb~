@@ -1,0 +1,23 @@
+class GroupsController < ApplicationController
+
+  def group_students
+    @group = current_user.groups.find(params.require(:id))
+    respond_to do |format|
+      format.all do 
+        render :json => @group.students.as_json(:root => false)
+      end
+    end
+  end
+
+  def add_application
+    @application = Client.find(params.require(:application_id))
+    @group = Group.find(params.require(:group_id))
+    @group.students.each do |student|
+      student.add_application(@application)
+    end
+    respond_to do |format|
+      format.all { render :json => {} }
+    end
+
+  end
+end

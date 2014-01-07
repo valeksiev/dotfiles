@@ -1,0 +1,18 @@
+require 'mongoid'
+require 'csv'
+require 'active_record'
+require 'paperclip'
+#require 'mongoid_paperclip'
+require 'om/version'
+require 'bcrypt'
+
+Dir[File.dirname(__FILE__) + '/om/models/mongo/*.rb'].each {|file| require file }
+Dir[File.dirname(__FILE__) + '/om/models/mongo/oauth2/*.rb'].each {|file| require file }
+Dir[File.dirname(__FILE__) + '/om/models/active_record/*.rb'].each {|file| require file }
+
+
+require 'om/mongoid_ext'
+
+module Om
+  # Your code goes here...
+end

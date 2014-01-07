@@ -1,0 +1,124 @@
+
+  <div id="activate-form" class="row">
+    <h1>Let's get started</h1>
+    <form action="" method="post" accept-charset="utf-8" id="activate-form">
+
+
+      <!-- Account details -->
+      <div class="row">
+        <div class="col-6 col-sm-6 col-lg-6">
+
+          <div class="control">
+            <input type="text" ng-model="account.first_name" class="form-control" name="first_name" value="" id="" placeholder="First name" />
+            <span class="first_name-error"></span>
+          </div>
+
+          <div class="control">
+            <input type="text" ng-model="account.last_name" class="form-control" name="last_name" value="" id="" placeholder="Last name" />
+            <span class="last_name-error"></span>
+          </div>
+
+          <div class="control">
+            <input type="text" ng-model="account.email" class="form-control" name="email" value="" id="" placeholder="Email" />
+            <span class="email-error"></span>
+            <p class="help-block">This email is only for us</p>
+          </div>
+
+          <p>
+          Select your school
+          </p>
+          <div class="control">
+            <select ng-model="account_school_id" class="form-control">
+              <option value="{{ school.id }}" ng-repeat="school in schools">{{ school.name }}</option>
+              <option value="new">Create new School</option>
+            </select>
+          </div>
+
+        </div>
+
+        <div class="col-6 col-sm-6 col-lg-6">
+          <h3>Profile photo</h3>
+          <a href="#" class="thumbnail">
+            <img ng-src="{{account.avatar}}" width="150">
+          </a>
+          <input type="file" name="avatar" value="" id="avatar" class="btn" ng-file-select="uploadFile('account', 'avatar', $files)" > 
+        </div>
+      </div>
+
+      <!-- School information  -->
+      <div id="waiting" class="col-lg-12" style="display:none">
+        <div class="loading"></div>
+      </div>
+      <div id="school_information" class="row" style="display:none">
+
+        <div class="col-6 col-sm-6 col-lg-6">
+          <h3>
+            <label for="account_school_name">Basic information</label>
+          </h3>
+
+          <div class="control-group">
+            <div class="controls">
+              <input type="checkbox" ng-model="school.chain" name="chain" value="" id="account_school_chain">   
+              <label for="account_school_chain">Institution is part of a larger chaing organization</label>
+            </div>
+          </div>
+
+          <div class="control-group">
+            <div class="controls">
+              <input class="form-control" ng-model="school.name" type="text" name="name" value="" id="school-name" placeholder="School Name">
+              <span class="school-name-error"></span>
+              <p class="help-block">What is the name of the school you are active in?</p>
+            </div>
+          </div>
+
+          <div class="control-group">
+            <div class="controls">
+              <select name="type" name="school-name" ng-model="school.type" class="form-control">
+                <option value=""> <%= School::TYPES.join(', ') %> </option>
+              </select>
+              <span class="school-name-error"></span>
+            </div>
+          </div>
+
+          <div class="control-group">
+            <div class="controls">
+              <input type="text" ng-model="school.contact_phone" name="school-contact" value="" placeholder="Phone number" class="form-control col-md-4" >
+              <span class="school-contact-error"></span>
+            </div> 
+          </div>
+
+        </div>
+
+
+        <div class="col-6 col-sm-6 col-lg-6">
+          <h3>
+            <label for="school_logo">Logo</label>
+          </h3>
+          <a href="#" class="thumbnail">
+            <img ng-src="{{school.logo}}" width="300">
+          </a>
+          <p>
+          Upload a logo of the school
+          <br>
+          Image should be at least 300px × 300px
+          </p>
+          <input type="file" name="logo" value="" id="school_logo" ng-file-select="uploadFile('school', 'logo', $files)">
+        </div>
+
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="control-group">
+        <div class="controls">
+          <input type="checkbox" name="subscription" value="" id="account_school_subscription" ng-model="subscription">  
+          <label for="account_school_subscription">Subscribe me to instructional and informational material related to Edhub</label>
+        </div>
+      </div>
+    </div>
+
+
+    <input ng-click="submitForm()" type="submit" name="submit" value="Save and Get Started!" class="btn btn-success">
+  </form>
+
+

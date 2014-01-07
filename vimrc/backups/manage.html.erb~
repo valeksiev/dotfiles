@@ -1,0 +1,162 @@
+<div class="row">
+  <div>
+    <h1>People</h1>
+  </div>
+
+  <%= render_partial 'submenu', __FILE__ %>
+
+  <hr>
+
+  <div class="row">
+
+    <div class="col-sm-6 col-lg-4">
+      <div class="btn-group">
+        <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown">
+          {{ btn_group || 'Loading ...' }}<span class="caret"></span>
+        </button>
+        <ul class="dropdown-menu" role="menu">
+          <li ng-repeat="gr in groups">
+          <a ng-click="filterByGroup(gr.id, gr.label)">{{ gr.label }}</a>
+          </li>
+          <!-- Not in this version -->
+          <!-- <li><a href="#" ng-click="addNewGroup()">Add new Group</a></li> -->
+          <!-- END -->
+        </ul>
+      </div>
+    </div>
+
+    <div class="col-sm-3 col-lg-4">
+      <a ng-click="addApplicationForm()" class="btn btn-default">
+        <i class="fa fa-qrcode"></i>
+        Add App 
+      </a>
+    </div>
+
+    <div class="col-sm-3 col-lg-4">
+      <a ng-click="appsList()" class="btn btn-default">
+        <i class="fa fa-qrcode"></i>
+        Apps
+      </a>
+    </div>
+
+    <div class="col-sm-3 col-lg-4">
+      <a class="btn btn-default">
+        <i class="fa fa-qrcode"></i>
+        A12345
+      </a>
+    </div>
+
+    <div class="col-sm-3 col-lg-4">
+      <a class="btn btn-default">
+        <i class="fa fa-link"></i>
+        http://0.0.0.0/sign_up/A12345
+      </a>
+    </div>
+
+  </div>
+
+
+  <br>
+
+  <div class="row">
+    <div>
+      <div class="input-group">
+        <div class="input-group-btn">
+          <button class="btn btn-default" type="submit"><i class="fa fa-search"></i></button>
+        </div>
+        <input type="text" ng-model="query" ng-change="search()" class="form-control" placeholder="Search">
+      </div>
+    </div>
+  </div>
+
+  <div class="row">
+
+    <div class="clearfix">
+
+      <div id="actions" class="btn-group pull-left" style="display:block">
+        <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown">
+          Action <span class="caret"></span>
+        </button>
+        <ul class="dropdown-menu" role="menu">
+          <li><a href="#">Add to Group</a></li>
+          <li><a href="#">Remove from Group</a></li>
+          <li><a href="#">Export</a></li>
+        </ul>
+      </div>
+
+      <div class="pull-right">
+        <ul class="pager">
+          <li ng-class="{disabled: current_page == 0}"><a ng-click="prev()"><i class="fa fa-chevron-circle-left"></i></a></li>
+          <li ng-class="{disabled: current_page == paged_items.length - 1 }"><a ng-click="next()"><i class="fa fa-chevron-circle-right"></i></a></li>
+        </ul>
+      </div>
+
+    </div>
+
+
+    <br/>
+
+    <div class="panel panel-default">
+      <!-- Default panel contents -->
+      <!-- Table -->
+      <table class="table table-striped">
+        <thead>
+          <tr>
+            <th>
+              <input type="checkbox" class="select-all" ng-model="selectToggle">
+            </th>
+            <th><i class="fa fa-user"></i> Name</th>
+            <th><i class="fa fa-envelope"></i> Email</th>
+            <th><i class="fa fa-filter"></i> Group</th>
+            <th><i class="fa fa-check-circle"></i> Status</th>
+            <th><i class="fa fa-calendar"></i> Created</th>
+            <th><i class="fa fa-gear"></i> Actions</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr class="show_loading" style="display:none"><td colspan="6"><div class="loading"></div></td></tr>
+          <tr class="show_empty" style="display:none"><td colspan="6">No Students yet ...</td></tr>
+          <tr class="student-item" ng-repeat="student in paged_items[current_page] | orderBy: sorting_order:reverse ">
+            <td><input type="checkbox" ng-click="displayAction()"></td>
+            <td><a href="#/people/manage/profile/{{ student.id }}">{{ student.fullname }}</a></td>
+            <td><a href='mailto:{{ student.email }}'>{{ student.email }}</a></td>
+            <td>{{ group }}</td>
+            <td>{{ student.status }}</td>
+            <td>{{ student.c_at }}</td>
+            <td>
+              <a ng-click="addToGroupForm($event, student.id)">Add to group</a> |
+              <a>Deactivate</a>
+              <a ng-click="removeFromGroup($event, student.id)">
+                <i class="fa fa-trash-o fa-lg text-danger"></i>
+              </a> 
+              <a ng-click="activateAccount($event, student.id)">
+                  <i class="fa fa-user fa-lg"></i>
+              </a>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+     </div>
+
+   </div>
+
+
+<script type="text/ng-template" charset="utf-8" id="applications.html">
+  <div ng-repeat="application in applications">
+    <a href="javascript://" ng-click="addApplication(application.id)">
+      <img ng-src="{{application.icon}}" width="100" height="100" />
+      <span>{{application.name}}</span>
+    </a>
+  </div>
+</script>
+
+<script type="text/ng-template" charset="utf-8" id="applications.html">
+  <div ng-repeat="application in applications">
+    <a href="javascript://" >
+      <img ng-src="{{application.icon}}" width="100" height="100" />
+      <span>{{application.name}}</span>
+    </a>
+  </div>
+</script>
+
+ </div>

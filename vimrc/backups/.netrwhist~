@@ -1,0 +1,10 @@
+let g:netrw_dirhistmax  =10
+let g:netrw_dirhist_cnt =8
+let g:netrw_dirhist_1='/home/vlad/projects/edhub/edhub.adm/app/controllers'
+let g:netrw_dirhist_2='/home/vlad/projects/edhub/playground/team_dashboard/app/models/sources'
+let g:netrw_dirhist_3='.'
+let g:netrw_dirhist_4='/home/vlad/projects/edhub/edhub.adm/app/models'
+let g:netrw_dirhist_5='/home/vlad/projects/edhub/edhub.api/views/api/v1/me'
+let g:netrw_dirhist_6='/home/vlad/projects/edhub/edhub.adm/vendor/gems/her/lib/her/model/associations'
+let g:netrw_dirhist_7='/Users/vlad/projects/edhub/edhub_mdl/lib/edhub_mdl'
+let g:netrw_dirhist_8='/Users/vlad/projects/edhub/edhub.mpr/bin'

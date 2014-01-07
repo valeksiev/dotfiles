@@ -1,0 +1,15 @@
+Application.directive 'navPills', () ->
+  restrict: 'E'
+  replace: true
+  scope: {
+    pills: '=list'
+  }
+  templateUrl: '/assets/directives/components/nav_pills.html'
+  controller: ['$scope', '$rootScope', ($scope, $rootScope) ->
+
+    $scope.selectPill = (index) ->
+      $(".nav-pills li").removeClass('active')
+      $("#pill_#{index}").addClass('active')
+      $rootScope.$broadcast "event:navPills", { selected: $scope.pills[index]}
+  ]
+

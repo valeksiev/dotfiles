@@ -1,0 +1,92 @@
+<div class="container-filled sheet">
+  <div class="row-fluid">
+    <div class="span3">
+      <div class="nav-aside">
+        <h1>Jobs</h1>  
+        <!--<?php
+          $children = wp_list_pages('title_li=&child_of='.$post->ID.'&echo=0');
+          if ($children) { ?>
+          <ul>
+            <?php echo $children; ?>
+          </ul>
+          <?php } ?>-->
+        <i data-jobid="46001"></i>
+        <script type="text/javascript">
+        (function () {
+            var po = document.createElement('script'); 
+            po.type = 'text/javascript'; 
+            po.async = true;
+            po.src = '//careers.stackoverflow.com/mvcjs/apply.js';
+            var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(po, s);
+            $('.careers-btn').addClass("btn btn-large");
+        })();
+        </script>
+      </div>
+    </div>
+
+    <div class="span9 pad-top-xsm">
+      <h2>Lead Developer</h2>
+      
+      <h3>About Edhub</h3> 
+      <p>Edhub Ltd. is a young and bright team building a web platform for other education technology companies, which raises their adoption at schools by giving teachers quick and easy access, less administration and better experience in class.</p>   
+      
+      <h3>Job Description</h3> 
+      <p>We are seeking a person who enjoys working with startups to reinforce the development team and have an active role in crafting an incredible product.</p>
+
+      <h5>Skills and experience:</h5>
+      <ul>
+        <li>In-depth knowledge with Javascript (preferably AngularJS)</li>
+        <li>Experience with Ruby 2.0 (Rails 4, Sinatra)</li>
+        <li>Experience with Web Development</li>
+        <li>Advanced english skills</li>
+      </ul>
+
+      <h5>Bonus points for:</h5>
+      <ul>
+        <li>MongoDB</li>
+        <li>Writing tests, TDD for example</li>
+        <li>Being fan of movies and books with “Star” in the title</li>
+      </ul>
+
+      <h3>We offer:</h3>
+      <ul>
+        <li>One of the best working environments in town</li>
+        <li>Valuable experience in product management</li>
+        <li>Flexible work time</li>
+        <li>Friendly and experienced team, who know how to celebrate their successes</li>
+        <li>Equity</li>
+      </ul>
+      
+      <p>If you are interested, send a mail to <strong>jobs[at]edhub.io</strong> with your CV and links to previous projects or GitHub account. We will contact you right away for more information and schedule a meeting.</p>
+      
+      <div class="text-bg">
+        <h2>Главен програмист</h2>
+
+        <h3>За Едхъб</h3>
+        <p>Едхъб ООД (Edhub Ltd.) е компания, която разработва платформа за разпространение на образователни приложения, която дава бърз и лесен достъп за учители и ученици и намалява нужната администрация на потребители в училищата. </p>
+        
+        <h3>Какво търсим?</h3>
+        <p>Човек с амбиции, който обича динамичната работа в стартъпи, желае да играе основна роля в разработката на нов продукт с голяма пазарна и финансова перспектива.</p>
+
+        <h5>Умения и опит:</h5>
+        <ul>
+          <li>Добри познания в Javascript (AngularJS)</li>
+          <li>Опит с Ruby 2.0 (Rails 4.0)</li>
+          <li>Oпит в интернет разработката</li>
+          <li>CSS: Bootstrap-3</li>
+          <li>SCM: Git</li>
+        </ul>
+
+        <h5>Бонус точки за:</h5>
+        <ul>
+          <li>MongoDB</li>
+          <li>Писане на тестове, по възможност TDD</li>
+          <li>Симпатии към филми и книги със “Stаr” в заглавието</li>
+        </ul>
+
+        <h3>Какво предлагаме?</h3>
+        <ul>
+          <li>Най-добрата работна среда в София</li>
+          <li>Опит в създаването на продукти</li>
+          <li>Гъвкаво работно време</li>
+          <li>Приятен и оп

@@ -1,0 +1,17 @@
+Application.directive 'currentGroups', () ->
+  restrict: 'AE',
+  replace: true,
+  templateUrl: '/assets/directives/components/current_groups.html',
+  scope: {
+    select: '&'
+  },
+  link: (scope, element, attrs) ->
+    scope.groups = window.current_user.groups
+  #controller: ['$scope', '$rootScope', ($scope, $rootScope) ->
+    #$scope.groups = $rootScope.current_account.groups
+    #console.log $scope.select()
+    #$scope.selectD = () ->
+      #console.log 'dir'
+      #console.log $scope.select
+  #]
+

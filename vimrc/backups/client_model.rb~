@@ -1,0 +1,160 @@
+class Client
+
+  include Mongoid::Document
+  include Mongoid::Timestamps
+
+  field :key, type: String, default: '' # client identifier (internal)
+  field :name, type: String, default: '' # client name
+  field :secret , type: String, default: '' # client secret
+  field :site_uri, type: String, default: '' # client website
+  field :redirect_uri, type: String, default: '' #  page called after authorization
+  field :description, type: String, default: '' # client short description
+  field :info, type: String, default: '' # client additional info
+  field :icon, type: String, default: ''
+  field :screenshots, type: Array, default: []
+  # TODO  relations 
+  field :category, type: Integer, default: '' # client category id
+  field :subject, type: Integer, default: '' # client subject id
+
+  field :start_age, type: Integer, default: 6
+  field :end_age, type: Integer, default: 12
+
+  field :granted_times, type: Integer, default: 0  # tokens granted in the authorization step
+  field :revoked_times, type: Integer, default: 0  # tokens revoked in the authorization step
+  field :blocked, type: Time, default: nil         # blocks any request from the client
+  field :level, type: String, default: :public     # :public, :private, :master
+
+  field :hooks_config, type: HashWithIndifferentAccess, default: {
+    base_url: '',
+    params: {},
+    headers: {}
+  }
+
+  #attr_accessible :name, :site_uri, :redirect_uri, :info, :scope
+
+  before_create  :random_secret
+  before_create  :random_key
+  before_create  :assign_scopes_by_level
+#  before_destroy :clean
+
+  before_save do
+   if hooks_config['params'].is_a? Hash
+     hooks_config['params'] ||= {}
+     hooks_config['headers'] ||= {}
+     hooks_config['headers'].merge!('Accept-Encoding' => '')
+   end
+  end
+
+# TODO add validations
+  validates :name, presence: true
+  #validates :redirect_uri, presence: true
+
+  #
+  # Relations
+  #
+  has_and_belongs_to_many :scopes
+  has_and_belongs_to_many :groups, :class_name => 'Group', :inverse_of => :applications
+  has_and_belongs_to_many :schools, :class_name => 'School', :inverse_of => :applications
+  belongs_to :owner, :class_name => 'Account'
+  belongs_to :company, :class_name => 'Company'
+  has_many :users,   :class_name => 'OauthAuthorization'
+  has_many :tokens,  :class_name => 'OauthToken'
+#  has_many :screenshots, class_name: 'Image'
+  has_many :price_models, :class_name => 'PriceModel'
+  accepts_nested_attributes_for :price_models
+
+  has_many :hooks, class_name: 'ActionHook'
+
+  before_save :do_assignments
+
+  def run_hooks(trigger, object)
+    hooks = []
+    self.hooks.where(:trigger => trigger).each do |hook|
+      # TODO refactor to use background jobs
+      hook.run(object)
+      hooks << hook
+    end
+    hooks
+  end
+
+  def launch_hook
+    self.hooks.where(:trigger => :sign_in).first
+  end
+
+  def do_assignments
+    self.company = self.owner.company if self.owner
+  end
+
+  # Increase the counter of resource owners granting the access
+  # to the client
+  def granted!
+    self.granted_times += 1
+    self.save
+  end
+
+  # Increase the counter of resource owners revoking the access
+  # to the client
+  def revoked!
+    self.revoked_times += 1
+    self.save
+  end
+
+  #
+  # Assign account to client
+  #
+  def assign!(account_id = nil)
+    if account = Account.where(id: account_id).first
+      self.users << account
+      self.save
+    end
+    self
+  end
+
+  class << self
+
+    # Filter to the client uri (internal identifier) and the
+    # redirect uri
+    def where_key(client_key)
+      where(key: client_key ).first
+    end
+
+    # Filter to the client secret and the redirect uri
+    def where_secret(secret, client_key)
+      where(secret: secret, key: client_key).first
+    end
+
+    # Filter to the client scope
+    def where_scope(scope)
+      all_in(scope_values: scope)
+    end
+
+    def where_client_key_and_secret(key, secret)
+      where(key: key, secret: secret).first
+    end
+
+    def where_client_key_and_refresh_token(key, refresh)
+      where(key: key, refresh_token: refresh).first
+    end
+
+  end
+
+
+  private
+
+  def random_secret
+    self.secret = SecureRandom.hex(10)
+  end
+
+  def assign_scopes_by_level
+
+    if self.level == 'master'
+      self.scopes << Scope.all
+    end
+
+  end
+
+  def random_key
+    self.key = SecureRandom.hex(10)
+  end
+
+end

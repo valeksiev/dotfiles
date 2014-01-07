@@ -1,0 +1,78 @@
+require 'typhoeus'
+
+class ActionHook
+
+  include Mongoid::Document
+  include Mongoid::Timestamps
+
+  ACCOUNT_TRIGGERS = %w( sign_up sign_in delete deactivate )
+
+  attr_accessor :object, :http, :request, :response, :processed_params
+
+  field :trigger, type: String, default: ''
+  field :urn, type: String, default: ''
+  field :method, type: String, default: ''
+  field :headers, type: HashWithIndifferentAccess, default: {}
+  field :params, type: HashWithIndifferentAccess, default: {}
+
+
+  belongs_to 'application', class_name: 'Client'
+  validates :trigger, inclusion: { in: ACCOUNT_TRIGGERS }
+
+  before_save do
+   method.upcase!
+  end
+
+  def run(object)
+    @object = object
+    return sign_in() if trigger == 'sign_in'
+    @request = request_factory
+    @response = @request.run
+    handle_response
+  end
+
+  def sign_in
+    build_request_params
+    self
+  end
+
+  def handle_response
+    @response
+  end
+
+  def base_config 
+    application.hooks_config
+  end
+
+  private
+
+  def request_factory
+    Typhoeus::Request.new(
+      application.hooks_config['base_url'] + urn,
+      method: method.to_s.downcase, 
+      body: build_request_params, 
+      headers: build_request_headers
+    )
+  end
+
+  def build_request_params
+    query = Rack::Utils.build_nested_query(application.hooks_config['params'].merge(params))
+    query = URI.decode(query)
+    # pattern: #[property] will be replaced with the response of @object to property
+    # @object not responding to `property` results in empty value
+   ap @object 
+      ap query
+    query = query.gsub(/#\[(.+?)\]/) { |match| ap $1; @object.try($1.to_sym) } 
+
+      ap query
+    URI.encode(query)
+    @processed_params = Rack::Utils.parse_nested_query(query)
+  end
+
+  def build_request_headers
+    headers = application.hooks_config['headers'] || {}
+    headers.merge( (headers || {} ) )
+  end
+end
+
+

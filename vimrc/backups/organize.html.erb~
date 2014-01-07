@@ -1,0 +1,18 @@
+<div class="row">
+  <div>
+    <h1>Applications</h1>
+  </div>
+
+  <%= render_partial 'submenu', __FILE__ %>
+
+  <div class="row" ng-repeat="application in applications">
+    <div class="thumbnail clearfix">
+      <img ng-src="{{application.icon}}">
+      <h3 class="pull-left">{{application.name}}</h3>
+      <a href="javascript://" ng-click="launch(application.id)" class="btn btn-success pull-right">Launch</a>
+      <a href="#/apps/{{application.id}}/tech_config" class="btn btn-success pull-right">Technical Configuration</a>
+      <a href="" class="btn btn-success pull-right">Edit</a>
+    </div>
+  </div>
+
+</div>

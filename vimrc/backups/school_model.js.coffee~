@@ -1,0 +1,24 @@
+Application.factory 'School', ['$rootScope', 'RailsApi', ($rootScope, RailsApi) ->
+
+  Model = {}
+
+  Model.all = (callback) ->
+    RailsApi.get('/schools', {}, (schools) ->
+      callback(schools)
+    )
+
+  Model.types = (callback) ->
+    RailsApi.get('/schools/types', {}, (types) ->
+      callback(types)
+    )
+
+  Model.add_application = (application_id, callback) ->
+    RailsApi.post(
+      '/schools/add_application',
+      {},
+      { application_id: application_id },
+      (response) ->
+        callback(response)
+
+  return Model
+]

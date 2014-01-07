@@ -1,0 +1,242 @@
+Application.factory 'RailsApi',
+['$rootScope', '$http', '$compile', '$templateCache', '$window', '$upload',
+($rootScope, $http, $compile, $templateCache, $window, $upload) ->
+  self = this
+
+  Rails = {}
+  #
+  # Fetch views from Rails
+  #
+  Rails.get_view = (id, template, scope, callback = null ) ->
+    $http.get(template,
+    { cache: $templateCache }).success((html) ->
+      $("#{id}").html($compile(html)(scope))
+      if _.isFunction(callback)
+        callback()
+    )
+  #
+  # Ask Rails for the current_account
+  #
+  Rails.get_current_account = (callback = null) ->
+    Rails.get('/get_current_account.json', null, (response) ->
+      return callback(response) if _.isFunction(callback)
+    )
+
+  Rails.sync = () ->
+    console.log 'Sync AngularJS with Rails ... '
+
+    unless _.isEmpty(window.current_user) and _.isEmpty(window.token)
+      $rootScope.current_account = window.current_user
+      $rootScope.token = window.token
+      $rootScope.rails_synced = true
+    else
+      console.log 'Account is not authenticated'
+      $rootScope.rails_synced = false
+
+    $rootScope.$broadcast 'Rails::Synced'
+
+  Rails.upload_file = (file, name, callback = null) ->
+    $upload.upload(
+          url: '/image/upload',
+          file: file,
+          data:
+            name: name
+        ).then((result) ->
+          callback(result) if _.isFunction(callback)
+        )
+      
+
+  Rails.upload_files = (files, callback = null) ->
+    uploaded = []
+    for name, file in files
+      Rails.upload_file(file, name, (response) ->
+        uploaded.push(response)
+      )
+    callback(uploaded) if _.isFunction
+
+  #################################################################
+
+  #
+  # RAILS API
+  #
+
+  # REST GET
+  #
+  Rails.get = (url = '', params = {}, callback) ->
+    $http(
+        method: "GET"
+        url:  url
+        params: params || null
+        cache:false
+      ).success ((data, status, headers, config) ->
+        console.log callback
+        callback(data, status)
+      )
+
+  # REST POST
+  #
+  Rails.post = (url = '', params = {}, data = {}, callback) ->
+    $http(
+        method: "POST"
+        url:  url
+        params: params || null
+        data: data
+        cache:false
+      ).success ((data, status, headers, config) ->
+        callback(data, status)
+      )
+
+  # REST PUT
+  #
+  Rails.put = (url = '', params = {}, data = {}, callback) ->
+    $http(
+        method: "PUT"
+        url:  url
+        params: params || null
+        data: data
+        cache:false
+      ).success ((data, status, headers, config) ->
+        callback(data, status)
+      )
+
+  # REST DELETE
+  #
+  Rails.remove = (url = '', params = {}, data = {}, callback) ->
+    $http(
+        method: "DELETE"
+        url:  url
+        params: params || null
+        data: data
+        cache:false
+      ).success ((data, status, headers, config) ->
+        callback(data, status)
+      )
+
+
+  #################################################################
+
+  #
+  # API
+  #
+
+  #
+  # REST API GET
+  #
+  Rails.api_get = (url = '', params = {}, callback = null, fail = null) ->
+    if $rootScope.token?
+      params = _.extend({ access_token: $rootScope.token.access_token }, params, true)
+
+    $http(
+        method: "GET"
+        url:    "#{$rootScope.api_uri}#{url}"
+        params: params || null
+        cache:  false
+      )
+      .success((data, status, headers, config) ->
+        fail(data,status) if _.isFunction(fail) and _.has(data, 'errors') and !_.isEmpty(data.errors)
+        callback(data, status)
+      )
+      .error((data, status, headers, config) ->
+        if _.isFunction(fail)
+          fail(data, status)
+      )
+
+  #
+  # REST API POST
+  #
+  Rails.api_post = (url = '', params = {}, data = {}, callback = null, fail = null) ->
+    if $rootScope.token?
+      params = _.extend({ access_token: $rootScope.token.access_token }, params, true)
+
+    $http(
+        method: "POST"
+        url:    "#{$rootScope.api_uri}#{url}"
+        params: params || null
+        data:   data
+        headers: { 'Content-Type':'application/x-www-form-urlencoded; charset=UTF-8' }
+        cache:  false
+      )
+      .success((data, status, headers, config) ->
+        fail(data,status) if _.isFunction(fail) and _.has(data, 'errors') and !_.isEmpty(data.errors)
+        callback(data, status)
+      )
+      .error((data, status, headers, config) ->
+        if _.isFunction(fail)
+          fail(data, status)
+      )
+  #
+  # REST API PUT
+  #
+  Rails.api_put = (url = '', params = {}, data = {}, callback = null, fail = null) ->
+    if $rootScope.token?
+      params = _.extend({ access_token: $rootscope.token.access_token }, params, true)
+
+    console.log 'puting', data
+    $http(
+        method: "put"
+        url:    "#{$rootScope.api_uri}#{url}"
+        params: params || null
+        data:   $.param(data)
+        headers: { 'Content-Type':'application/x-www-form-urlencoded; charset=UTF-8' }
+        cache:  false
+      )
+      .success((data, status, headers, config) ->
+        fail(data,status) if _.isFunction(fail) and _.has(data, 'errors') and !_.isEmpty(data.errors)
+        callback(data, status)
+      )
+      .error((data, status, headers, config) ->
+        if _.isFunction(fail)
+          fail(data, status)
+      )
+
+  #
+  # REST API DELETE
+  #
+  Rails.api_delete = (url = '', params = {}, data = {}, callback = null, fail = null) ->
+    if $rootScope.token?
+      params = _.extend({ access_token: $rootScope.token.access_token }, params, true)
+
+    $http(
+        method: "DELETE"
+        url:    "#{$rootScope.api_uri}#{url}"
+        params: params || null
+        data:   data
+        cache:  false
+      )
+      .success((data, status, headers, config) ->
+        fail(data,status) if _.isFunction(fail) and _.has(data, 'errors') and !_.isEmpty(data.errors)
+        callback(data, status)
+      )
+      .error((data, status, headers, config) ->
+        if _.isFunction(fail)
+          fail(data, status)
+      )
+  #
+  # BATCH
+  #
+  Rails.api_batch = (queries = [], callback = null, fail = null) ->
+
+    if _.has($rootScope.token, 'access_token')
+      params = { 'active_token': $rootScope.token.access_token }
+
+    $http(
+      method: "POST"
+      url: "#{$rootScope.api_uri}/batch"
+      params: params
+      data: $.param({ 'batch': queries })
+      cache:false
+      headers: {
+        'Content-Type': 'application/x-www-form-urlencoded; charset=UTF-8'
+      }
+    )
+    .success((data, status, headers, config) ->
+      fail(data,status) if _.isFunction(fail) and _.has(data, 'errors') and !_.isEmpty(data.errors)
+      callback(data, status)
+    )
+    .error((data, status, headers, config) ->
+      if _.isFunction(fail)
+        fail(data, status)
+    )
+
+  return Rails
+]

@@ -1,0 +1,74 @@
+// This is a manifest file that'll be compiled into application.js, which will include all the files
+// listed below.
+//
+// Any JavaScript/Coffee file within this directory, lib/assets/javascripts, vendor/assets/javascripts,
+// or vendor/assets/javascripts of plugins, if any, can be referenced here using a relative path.
+//
+// It's not advisable to add code directly here, but if you do, it'll appear at the bottom of the
+// compiled file.
+//
+// Read Sprockets README (https://github.com/sstephenson/sprockets//sprockets-directives) for details
+// about supported directives.
+//= require jquery
+//= require jquery_ujs
+//= require async
+//= require underscore/1.5.2/underscore
+//= require angularjs/angular
+//= require angularjs/angular-route
+//= require angularjs/angular-file-upload
+//= require angularjs/angular-resource
+//= require angularjs/ui-bootstrap-tpls-0.9.0.js
+//= require bootstrap
+//= require bootstrap-slider
+//= require offcanvas
+//= require app
+//= require_tree ./providers
+//= require config
+//= require router
+//= require run
+//= require_tree ./controllers
+//= require_tree ./models
+//= require_tree ./services
+//= require_tree ./directives
+//= require_tree ./filters
+//= require jquery.atwho
+//
+
+window.config         = {}
+window.config.api_uri = '<%= EDHUB_API.base_uri %>'
+window.config.env     = '<%= Rails.env  %>'
+
+//
+// Access rootScope of AngularJS
+// Example:
+// var rootScope = rootScope()
+// => Scope {$id: "002", $$childTail: null, $$childHead: null, $$prevSibling: ....
+//
+rootScope = function() {
+  return (angular.element(document).injector()).get('$rootScope'.toString())
+}
+
+// Fetch any AngularJS dependency
+//
+// And return it to the user
+//
+// Example:
+//   var model = getModel('Model')
+//
+//   or
+//
+//   var rootScope = getModel('$rootScope')
+//
+getModel = function(model_name) {
+  return (angular.element(document).injector()).get(model_name.toString())
+}
+
+// Get the AngularJS Scope of html element
+//
+// Example:
+//   var scope = getScope('body')
+//
+//   var content_scope = getScope('//content')
+getScope = function(selector) {
+  return angular.element(selector).scope()
+}

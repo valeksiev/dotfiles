@@ -1,0 +1,25 @@
+Application.controller 'teacher.AppsCtrl',
+['$scope', '$rootScope', '$compile', '$http', '$timeout', 'RailsApi', 'Account', 'Blueprint', 'Application',
+($scope, $rootScope, $compile, $http, $timeout, RailsApi, Account, Blueprint, Application) ->
+
+  window.http = $http
+
+  $scope.$on '$viewContentLoaded', () ->
+    $scope.initialize()
+
+  $scope.initialize = () ->
+    Application.for_current_account((response) ->
+      $scope.applications = response
+    )
+
+  $scope.launch = (id) ->
+    Application.launch(id, (hook) ->
+      $scope.launch_hook = hook
+      $timeout(() ->
+        $('#launch-form').submit()
+      , 0)
+    )
+
+
+
+]

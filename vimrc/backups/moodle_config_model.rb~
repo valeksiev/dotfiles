@@ -1,0 +1,40 @@
+class MoodleConfig 
+
+  include Mongoid::Document
+  include Mongoid::Timestamps::Short
+  
+  belongs_to :school,    class_name: 'School', inverse_of: :moodle_config
+
+  field :url, type: String, default: ''
+  field :downloaded_at, type: Date, default: ''
+  field :public_key, type: String, default: ''
+  field :private_key, type: String, default: ''
+  field :plugin_path, type: String, default: ''
+
+  # Validations
+  
+
+  # public/system/templates/moodle_plugin/lib.php|grade.php|host_ping.php|index.php| config.php.example -> config.php | zip
+
+  # public/system/moodle/:school_id/edhub_moodle.zip
+  def generate_plugin
+
+  end
+
+  def stream_plugin
+
+  end
+
+end
+
+=begin
+  
+  config.php
+
+  config.php.erb
+
+  <?php 
+    $root_path = <%= ruby code... %>
+  ?>
+
+end

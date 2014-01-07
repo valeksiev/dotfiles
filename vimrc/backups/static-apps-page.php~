@@ -1,0 +1,140 @@
+<section class="apps-banner">
+  <div class="container">
+    <div class="heading center pad-bottom-sm">
+      <h1>Forever Free Educational Single Sign On.</h1>
+      <a data-toggle="modal" data-target="#apps-modal" class="btn btn-large btn-primary apps" >Unlock Your App</a>
+    </div>
+    <div class="image"></div>
+    <div class="learn-more-apps">
+      <p>
+        <a data-toggle="modal" data-target="#apps-modal" >
+          learn more 
+          <i class="icon-navigation-down small"></i> 
+        </a>
+      </p>
+    </div>
+  </div>
+</section>
+
+<section class="apps-features pad-top-sm pad-bottom-med">
+  <div class="container">
+    <div class="heading center">
+      <h2><span class="weight">Remove the registration barrier</span> for </br> single children and whole schools.</h2>
+    </div>
+    <div class="row-fluid">
+      <div class="span4">
+        <div class="features-icon adressbook"></div>
+        <p><span class="weight">Easy to implement Single Sign On platform</span> that lets you use existing, up-to-date school accounts.</p>
+      </div>
+      <div class="span4">
+        <div class="features-icon add-application"></div>
+        <p><span class="weight">Increase the engagement of students</span> by placing your app on their school screens and giving them instant access.</p>
+      </div>
+      <div class="span4">
+        <div class="features-icon one-password"></div>
+        <p><span class="weight">Receive valuable data on application usage</span> in schools, departments or even single classrooms.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="section-desc center"><h4 class="light">Testimonials:</h4></div>
+
+<section class="testimonials">
+  <div class="container pad-top-sm pad-bottom-lg">
+    <div class="row-fluid">
+      <div class="span6">
+        <div class="quote">„From my experience with thousands of pupils and teachers I learned that what they need is a service like Edhub. It will bring the best of technology to schools!“</div>
+        <div class="row-fluid darin pad-top-xsm">
+          <div class="span8">
+            <div class="image pull-left"></div>
+            <p><span class="weight">Darin Madhzarov</span></br>CEO, Ucha.se</br>Online video learning</p>
+          </div>
+          <div class="span4">
+            <div class="logo pull-right"></div>
+          </div>
+        </div>
+      </div>
+      <div class="span6">
+        <div class="quote">"Codebender does a lot of workshops. Edhub makes authenticating teachers and students work like a charm!"</div>
+        <div class="row-fluid vasilis pad-top-xsm">
+          <div class="span8">
+            <div class="image pull-left"></div>
+            <p><span class="weight">Vasilis Georgitzikis</span></br>CEO, Codebender</br>Ardiuno online coding environment</p>
+          </div>
+          <div class="span4">
+            <div class="logo pull-right"></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="apps-action">
+  <div class="container">
+    <div class="row-fluid">
+      <div class="span7 pad-top-sm">
+        <h3 class="spread-mid"><span class="logo-color weight">ed</span><span class="weight">hub</span> helps apps for education implement teacher </br> requirement #1 - <span class="weight">„One place to log in for apps“.</span> </br> It‘s quick and works gracefully with any architecture.</h3>
+      </div>
+      <div class="span5 center pad-top-sm">
+        <h3 class="apps-color">Give it a try.</h3>
+        <a data-toggle="modal" data-target="#apps-modal"  class="btn btn-large btn-primary apps" >Unlock Your App</a>
+        <p class="details grayish pad-top-sm">It takes about 10 minutes to set up and </br> our team is there to support you.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="facts pad-top-sm pad-bottom-sm">
+  <div class="heading center">
+    <h3 class="grayish">Quick facts:</h3>
+  </div>
+  <div class="container">
+    <div class="row-fluid">
+      <div class="span3">
+        <div class="row-fluid">
+          <div class="span3"><div class="number mid pull-left inverted">1</div></div>
+          <div class="span9"><p class="grayish">Teachers spend up to </br> 2/3rd of their time in administration.</p></div>
+        </div>
+      </div>
+      <div class="span3">
+        <div class="row-fluid">
+          <div class="span3"><div class="number mid pull-left inverted">2</div></div>
+          <div class="span9"><p class="grayish">Setup and login are slow and error-prone activities. Especially for whole classrooms.</p></div>
+        </div>
+      </div>
+      <div class="span3">
+        <div class="row-fluid">
+          <div class="span3"><div class="number mid pull-left inverted">3</div></div>
+          <div class="span9"><p class="grayish">Students dislike and forget multiple URLs, usernames or passwords.</p></div>
+        </div>
+      </div>
+      <div class="span3">
+        <div class="row-fluid">
+          <div class="span3"><div class="number mid pull-left inverted">4</div></div>
+          <div class="span9"><p class="grayish">Registration is the first and biggest barrier to adopting online apps of any kind.</p></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Modal -->
+<div class="modal fade" id="apps-modal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true" stylde="display: none;">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+        <h4 class="modal-title" id="myModalLabel">Modal title</h4>
+      </div>
+      <div class="modal-body">
+         <?php dynamic_sidebar('unlock-app-widget'); ?>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+        <button type="button" class="btn btn-primary">Save changes</button>
+      </div>
+    </div><!-- /.modal-content -->
+  </div><!-- /.modal-dialog -->
+</div><!-- /.modal -->

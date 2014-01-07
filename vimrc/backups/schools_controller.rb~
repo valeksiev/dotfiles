@@ -1,0 +1,25 @@
+class SchoolsController < ApplicationController
+
+  def index
+    respond_to do |format|
+      format.all { render :json => School.all.as_json(:root => false) }
+    end
+  end
+
+  def types
+    respond_to do |format|
+      format.all { render :json => School::TYPES }
+    end
+  end
+
+  def add_application
+    current_user.school.applications << Client.find(params.require(:application_id))
+    respond_to do |format|
+      format.all { render :json => { :status => 'scucess' } }
+    end
+  rescue Exception => e
+    respond_to do |format|
+      format.all { render :json => { :status => 'error' } }
+    end
+  end
+end

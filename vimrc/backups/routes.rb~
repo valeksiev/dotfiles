@@ -1,0 +1,95 @@
+EdhubAdm::Application.routes.draw do
+
+  # The priority is based upon order of creation: first created -> highest priority.
+  # See how all your routes lay out with "rake routes".
+
+  # You can have the root of your site routed with "root"
+  root :to => 'accounts#sign_in'
+
+  match 'moodle/download' => 'moodle#download', :via => [:post]
+
+  match 'applications/current' => 'applications#current', :via => [:get]
+  match 'applications/tech_config' => 'applications#tech_config', :via => [:post]
+  match 'applications/launch/:id' => 'applications#launch', :via => [:get]
+  match 'applications/avaliable_hooks' => 'applications#avaliable_hooks', :via => [:get]
+  resources :applications
+
+  match 'schools/types' => 'schools#types', :via => [:get]
+  match 'schools/add_application' => 'schools#add_application', :via => [:post]
+  resources :schools
+
+  match 'groups/:id/students' => 'groups#group_students', :via => [:get]
+  match 'groups/add_application' => 'groups#add_application', :via => [:post]
+  match 'groups/:group_id/applications' => 'groups#applications', :via => [:get]
+  resources :groups
+
+  #match 'current_account/applications' => 'accounts#current_account_applications', :via => [:get]
+
+  match 'index'  => 'dashboard#index', :as => :index, :via => [:get]
+
+  match 'sign_in' => 'accounts#sign_in', :via => [:get, :post]
+  match 'sign_up' => 'accounts#sign_up', :via => [:get, :post]
+  match 'sign_out' => 'accounts#sign_out', :via => [:get]
+  match 'sign_up_confirmation' => 'accounts#sign_up_confirmation', :via => [:get]
+  # @TODO: may be we could remove this line below. I used it only for debuging 
+  match 'sign_up_confirmation(/:code)' => 'accounts#sign_up_confirmation', :via => [:get]
+  match 'activate(/:token)' => 'accounts#activate', :as => :activate_account, :via => [:get, :post, :put]
+  match 'get_current_user' => 'accounts#get_current_user', :via => [:get]
+  resources :accounts
+
+  match 'people' => 'people#index', :via => [:get]
+  match 'upload' => 'people#upload', :via => [:get, :post]
+  match 'people/create' => 'people#create_account', :via => [:post]
+
+  post 'image/upload' => 'images#upload'
+  get 'image/get/:id' => 'images#get', :as => 'get_image'
+
+  # Example of regular route:
+  #   get 'products/:id' => 'catalog#view'
+
+  # Example of named route that can be invoked with purchase_url(id: product.id)
+  #   get 'products/:id/purchase' => 'catalog#purchase', as: :purchase
+
+  # Example resource route (maps HTTP verbs to controller actions automatically):
+  #   resources :products
+
+  # Example resource route with options:
+  #   resources :products do
+  #     member do
+  #       get 'short'
+  #       post 'toggle'
+  #     end
+  #
+  #     collection do
+  #       get 'sold'
+  #     end
+  #   end
+
+  # Example resource route with sub-resources:
+  #   resources :products do
+  #     resources :comments, :sales
+  #     resource :seller
+  #   end
+
+  # Example resource route with more complex sub-resources:
+  #   resources :products do
+  #     resources :comments
+  #     resources :sales do
+  #       get 'recent', on: :collection
+  #     end
+  #   end
+  
+  # Example resource route with concerns:
+  #   concern :toggleable do
+  #     post 'toggle'
+  #   end
+  #   resources :posts, concerns: :toggleable
+  #   resources :photos, concerns: :toggleable
+
+  # Example resource route within a namespace:
+  #   namespace :admin do
+  #     # Directs /admin/products/* to Admin::ProductsController
+  #     # (app/controllers/admin/products_controller.rb)
+  #     resources :products
+  #   end
+end
