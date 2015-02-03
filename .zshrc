@@ -52,16 +52,62 @@ export EDITOR=vim
 alias pr='cd ~/projects'
 alias edhub='cd ~/projects/edhub'
 alias reload=ll
+
 alias adm='cd ~/projects/edhub/edhub.adm'
-alias api='cd ~/projects/edhub/edhub.api'
 alias adms='adm && rails s'
 alias admc='adm && rails c'
+
+alias om='cd ~/projects/edhub/edhub.om'
+
+alias popa='cd ~/projects/popa/writing'
+
+alias pto='cd ~/projects/perpetto'
+alias srv='cd ~/projects/perpetto/ptto.srv'
+alias srvs='srv && rails s'
+alias srvc='srv && rails c'
+
+alias api='cd ~/projects/edhub/edhub.api'
 alias apis='api && ruby watcher.rb'
 alias apic='api && rake console'
 alias console='rake console 2>/dev/null || rails c 2>/dev/null'
 alias nwfix='sudo nmcli nm sleep false'
-alias awsjarvis='ssh -i ~/.ssh/edhub-aws-jarvis.pem ubuntu@54.201.38.155'
+alias awsjarvis='ssh -i ~/.ssh/edhub-aws-jarvis.pem ubuntu@54.187.98.124'
+
+
+alias awshal='ssh       -i   ~/.ssh/aws-marvin.pem   ubuntu@54.76.192.253'
+
+alias awsmarvin='ssh    -i   ~/.ssh/aws-marvin.pem   ubuntu@54.77.190.239'
+alias awsoptimus='ssh   -i   ~/.ssh/aws-marvin.pem   ubuntu@54.77.188.236'
+alias awssonny='ssh     -i   ~/.ssh/aws-marvin.pem   ubuntu@54.77.197.202'
+alias awst1000='ssh     -i   ~/.ssh/aws-marvin.pem   ubuntu@54.77.130.33'
+
+alias   awsbender='ssh   -i   ~/.ssh/aws-marvin.pem   ubuntu@54.77.204.222'
+alias   awssammy='ssh    -i   ~/.ssh/aws-marvin.pem   ubuntu@54.76.209.219'
+alias   awsdalek='ssh    -i   ~/.ssh/aws-marvin.pem   ubuntu@54.77.190.245'
+alias   awsdaneel='ssh   -i   ~/.ssh/aws-marvin.pem   ubuntu@54.76.128.38'
+
+
+alias :e='vim'
+
+
+alias awsjenkins='ssh   -i   ~/.ssh/aws-jenkins.pem   ubuntu@54.72.145.3'
+alias catjarvis='ssh root@5.10.79.26'
+
+# RACKSPACE
+alias rsmongo='ssh   root@134.213.158.68'
+alias rsredis='ssh   root@134.213.158.44'
+
+alias rsmarvin='ssh   root@134.213.157.24'
+alias rssonny='ssh   root@134.213.60.5'
+alias rsbender='ssh   root@134.213.148.84'
 #export PATH="~/dotfiles/.tmuxifier/bin:$PATH"
 #eval "$(tmuxifier init -)"
 
 PATH=$PATH:$HOME/.rvm/bin # Add RVM to PATH for scripting
+export PATH=/usr/local/bin:$PATH
+
+
+### Added by the Heroku Toolbelt
+export PATH="/usr/local/heroku/bin:$PATH"
+### Add PredictioIO bin
+export PATH="/Users/vlad/projects/predictionIO/0.8.2/dist/bin:$PATH"

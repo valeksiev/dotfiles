@@ -586,3 +586,15 @@ snippet respond_to
 	respond_to do |format|
 		format.all { render :json => ${1} }
 	end
+
+snippet fie
+	field :${1:name}, :type => ${2:String}, :default => ${3:''}
+snippet mmod class .. end
+	class ${1:`substitute(Filename(), '^.', '\u&', '')`}
+
+		include Mongoid::Document
+		include Mongoid::Timestamps
+
+		${2}
+		field :name, :type => Type, :default => ''
+	end

@@ -26,7 +26,6 @@ if has("autocmd")
     autocmd BufEnter *.rb  compiler ruby
 
     " If editing Gemfile, then run it after save
-    " autocmd BufEnter Gemfile RunCommand !bundle install
 
     " Syntax highlight for files that don't end with *.rb extension - Adding
     " syntax = ruby  

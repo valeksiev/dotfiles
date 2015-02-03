@@ -202,6 +202,7 @@ if has("autocmd")
     " don't write swapfile on most commonly used directories for NFS mounts or USB sticks
     autocmd BufNewFile,BufReadPre /media/*,/mnt/* set directory=~/tmp,/var/tmp,/tmp
     autocmd BufRead,BufNewFile *.json set filetype=javascript
+    autocmd BufRead,BufNewFile *.coffee.erb set filetype=coffee
 
     " Switch to working directory of the open file
     autocmd BufEnter * silent! lcd %:p:h
@@ -211,9 +212,6 @@ if has("autocmd")
     autocmd BufEnter *.c   compiler gcc
     autocmd BufEnter *.cpp compiler gcc
     autocmd BufEnter *.rb  compiler ruby
-
-    " If editing Gemfile, then run it after save
-    autocmd BufEnter Gemfile RunCommand !bundle install
 
     " Syntax highlight for files that don't end with *.rb extension - Adding
     " syntax = ruby  
