@@ -100,6 +100,7 @@ alias rsredis='ssh   root@134.213.158.44'
 alias rsmarvin='ssh   root@134.213.157.24'
 alias rssonny='ssh   root@134.213.60.5'
 alias rsbender='ssh   root@134.213.148.84'
+alias rsdaneel='ssh root@134.213.135.170'
 #export PATH="~/dotfiles/.tmuxifier/bin:$PATH"
 #eval "$(tmuxifier init -)"
 
@@ -111,3 +112,4 @@ export PATH=/usr/local/bin:$PATH
 export PATH="/usr/local/heroku/bin:$PATH"
 ### Add PredictioIO bin
 export PATH="/Users/vlad/projects/predictionIO/0.8.2/dist/bin:$PATH"
+alias rubygames='littlebrat && escape_to_rubyconf && rubyhop'

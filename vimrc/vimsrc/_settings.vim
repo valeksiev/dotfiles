@@ -13,7 +13,7 @@ set title                             " show title
 set incsearch                         " find as entering pattern
 set t_Co=256                          " uses 256 colors
 set ignorecase                        " case insensitive patterns,..
-set cursorline
+set nocursorline
 set smartcase                         " when only lowercase is used
 set wildmenu                          " use command-line completion menu,...
 set wildmode=longest:full             " with wildmode
