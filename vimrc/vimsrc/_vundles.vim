@@ -29,10 +29,12 @@ Bundle 'godlygeek/tabular'
 Bundle 'thoughtbot/vim-rspec'
 Bundle 'tpope/vim-dispatch'
 Bundle 'jgdavey/tslime.vim'
-Bundle 'wincent/Command-T'
+" Bundle 'wincent/Command-T'
 Bundle 'othree/xml.vim'
 Bundle 'tpope/vim-abolish'
 Bundle 'derekwyatt/vim-scala'
-
+Bundle 'benmills/vimux'
+Bundle 'kien/ctrlp.vim'
+Bundle 'dyng/ctrlsf.vim'
 
 filetype plugin indent on

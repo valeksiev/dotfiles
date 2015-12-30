@@ -41,7 +41,7 @@ alias tmux="TERM=screen-256color-bce tmux"
 # Which plugins would you like to load? (plugins can be found in ~/.oh-my-zsh/plugins/*)
 # Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
-plugins=(git virtualenv)
+plugins=(git virtualenv svn svn-fast-info chucknorris)
 
 source $ZSH/oh-my-zsh.sh
 
@@ -71,6 +71,10 @@ alias apis='api && ruby watcher.rb'
 alias apic='api && rake console'
 alias console='rake console 2>/dev/null || rails c 2>/dev/null'
 alias nwfix='sudo nmcli nm sleep false'
+
+alias ps='ps xa'
+alias dpoint='ssh root@164.138.216.197'
+
 alias awsjarvis='ssh -i ~/.ssh/edhub-aws-jarvis.pem ubuntu@54.187.98.124'
 
 
@@ -100,7 +104,6 @@ alias rsredis='ssh   root@134.213.158.44'
 alias rsmarvin='ssh   root@134.213.157.24'
 alias rssonny='ssh   root@134.213.60.5'
 alias rsbender='ssh   root@134.213.148.84'
-alias rsdaneel='ssh root@134.213.135.170'
 #export PATH="~/dotfiles/.tmuxifier/bin:$PATH"
 #eval "$(tmuxifier init -)"
 
@@ -110,6 +113,34 @@ export PATH=/usr/local/bin:$PATH
 
 ### Added by the Heroku Toolbelt
 export PATH="/usr/local/heroku/bin:$PATH"
-### Add PredictioIO bin
-export PATH="/Users/vlad/projects/predictionIO/0.8.2/dist/bin:$PATH"
 alias rubygames='littlebrat && escape_to_rubyconf && rubyhop'
+alias rspostgres='ssh root@134.213.157.201'
+alias rscaprica='ssh root@134.213.135.54'
+alias rsgiskard='ssh root@162.13.143.63'
+alias rsleoben='ssh root@134.213.156.238'
+alias rsboomer='ssh root@134.213.155.64'
+alias rscavil='ssh root@162.13.136.101'
+alias rstyrol='ssh root@134.213.213.241'
+alias rsathena='ssh root@162.13.141.100'
+alias rsdaneel='ssh root@134.213.49.56'
+alias rsnestor='ssh root@162.13.162.222'
+export PATH="/Users/vlad/projects/PredictionIO/0.9.1/bin:$PATH"
+
+alias calias='vim ~/.zshrc && source ~/.zshrc'
+alias mvim='vim ~/.vim/vimsrc'
+
+export rvmsudo_secure_path=1
+export RBENV_ROOT=/usr/local/var/rbenv
+if which rbenv > /dev/null; then eval "$(rbenv init -)"; fi
+export PATH=/usr/local/bin:$PATH
+export PATH=/usr/local/sbin:$PATH
+export PATH="$HOME/.rbenv/bin:$PATH"
+if which rbenv > /dev/null; then eval "$(rbenv init -)"; fi
+
+function rbenvsudo(){
+  executable=$1
+  shift 1
+  sudo $(rbenv which $executable) $*
+}
+
+alias uni='cd /Volumes/Macintosh\ HD/backup/projects/UNI'

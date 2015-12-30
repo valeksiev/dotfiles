@@ -179,7 +179,7 @@ nnoremap <leader>? :DiffSaved<cr>
 set foldmethod=syntax         " folding based on the indent
 set foldnestmax=10            " deepest fold 
 set foldlevel=1
-set nofoldenable              " don't start with folded lines
+set foldenable              " don't start with folded lines
 
 " -----------------------------------------------------------------------------
 " Only do this part if compiled with support for autocommands
