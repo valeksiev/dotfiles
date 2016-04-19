@@ -144,3 +144,5 @@ function rbenvsudo(){
 }
 
 alias uni='cd /Volumes/Macintosh\ HD/backup/projects/UNI'
+alias be='bundle exec '
+alias r='rails'
