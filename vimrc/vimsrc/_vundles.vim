@@ -36,5 +36,6 @@ Bundle 'derekwyatt/vim-scala'
 Bundle 'benmills/vimux'
 Bundle 'kien/ctrlp.vim'
 Bundle 'dyng/ctrlsf.vim'
+Bundle 'StanAngeloff/php.vim'
 
 filetype plugin indent on

@@ -146,3 +146,7 @@ function rbenvsudo(){
 alias uni='cd /Volumes/Macintosh\ HD/backup/projects/UNI'
 alias be='bundle exec '
 alias r='rails'
+
+eval "$(thefuck --alias)"
+
+export PATH=/Applications/MAMP/bin/php/php5.6.10/bin:$PATH

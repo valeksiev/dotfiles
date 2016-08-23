@@ -1,5 +1,8 @@
 let g:netrw_dirhistmax  =10
-let g:netrw_dirhist_cnt =3
+let g:netrw_dirhist_cnt =6
 let g:netrw_dirhist_1='/Users/vlad/projects/perpetto/ptto.manage/host_vars'
 let g:netrw_dirhist_2='/Users/vlad/projects/perpetto/ptto.srv'
 let g:netrw_dirhist_3='/Users/vlad/Downloads/angular-tutorial'
+let g:netrw_dirhist_4='/Users/vlad/.oh-my-zsh'
+let g:netrw_dirhist_5='/Users/vlad/projects/perpetto/ptto.srv/db/migrate'
+let g:netrw_dirhist_6='/Volumes/Perpetto/public_html/wp-content/themes/klaus/_include/css'
