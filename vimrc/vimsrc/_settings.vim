@@ -5,7 +5,7 @@ set encoding=utf-8
 set fileencodings=utf-8               " encoding always must be utf-8
 set fileformats=unix,dos              " Setting file format try first unix
 set nocompatible                      " don't try to be strictly vi-like
-set modelines=1                       " for now use it //don't use modelines (for security) 
+set modelines=1                       " for now use it //don't use modelines (for security)
 set viminfo='20,\"50                  " use a viminfo file,...
 set history=1500                      " limit history
 set ruler                             " show the cursor position
@@ -57,7 +57,7 @@ let mapleader = ","
 " In VIEW mode.
 " -----------------------------------------------------------------------------
 set showmatch             " show matching brackets/parenthesis
-set mat=5                 " Blink 5 second 
+set mat=5                 " Blink 5 second
 
 " -----------------------------------------------------------------------------
 "  ctags
@@ -90,9 +90,9 @@ set statusline+=%-14.([%l/%L],%c%V%)     " cursor info
 " Set color scheme
 "
 syntax enable
-colorscheme badwolf 
+colorscheme badwolf
 set background=dark
-"colorscheme hemisu 
+"colorscheme hemisu
 syntax on
 " -----------------------------------------------------------------------------
 " Windows settings
@@ -177,7 +177,7 @@ nnoremap <leader>? :DiffSaved<cr>
 " -----------------------------------------------------------------------------
 " set nofoldenable            "dont fold by default
 set foldmethod=syntax         " folding based on the indent
-set foldnestmax=10            " deepest fold 
+set foldnestmax=10            " deepest fold
 set foldlevel=1
 set foldenable              " don't start with folded lines
 
@@ -214,7 +214,7 @@ if has("autocmd")
     autocmd BufEnter *.rb  compiler ruby
 
     " Syntax highlight for files that don't end with *.rb extension - Adding
-    " syntax = ruby  
+    " syntax = ruby
     au BufRead,BufNewFile {Capfile,Gemfile,Rakefile,Thorfile,config.ru,.caprc,.irbrc,irb_tempfile*} set ft=ruby
 
     autocmd BufEnter *access.log* set filetype=httplog
@@ -224,7 +224,7 @@ if has("autocmd")
 
     " Arduino
   	autocmd Filetype arduino set errorformat^=\%-G%.%#/path/to/Arduino/IDE/%.%#
-    autocmd BufRead,BufNewFile *.pde setfiletype arduino 
+    autocmd BufRead,BufNewFile *.pde setfiletype arduino
 
     " Maximise on open on Windows
     if has('win32')
@@ -234,7 +234,7 @@ if has("autocmd")
     " Hacking the system bell and flash
     set noerrorbells visualbell t_vb=
     autocmd GUIEnter * set visualbell t_vb=
-    
+
 
     " Custom filetypes settings: Python, Shell, JSON, Vagrant, CloudFormation
     au FileType python,sh set tabstop=4 shiftwidth=4 softtabstop=4

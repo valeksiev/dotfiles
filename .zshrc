@@ -45,6 +45,8 @@ plugins=(git virtualenv svn svn-fast-info chucknorris)
 
 source $ZSH/oh-my-zsh.sh
 
+source /usr/local/var/rbenv/versions/2.2.1/lib/ruby/gems/2.2.0/gems/tmuxinator-0.9.0/completion/tmuxinator.zsh
+
 # Customize to your needs...
 [[ -s "$HOME/.rvm/scripts/rvm" ]] && . "$HOME/.rvm/scripts/rvm"
 
@@ -62,9 +64,11 @@ alias om='cd ~/projects/edhub/edhub.om'
 alias popa='cd ~/projects/popa/writing'
 
 alias pto='cd ~/projects/perpetto'
+alias www='cd ~/projects/www'
 alias srv='cd ~/projects/perpetto/ptto.srv'
 alias srvs='srv && rails s'
 alias srvc='srv && rails c'
+alias mng='cd ~/projects/perpetto/ptto.manage'
 
 alias api='cd ~/projects/edhub/edhub.api'
 alias apis='api && ruby watcher.rb'
@@ -104,6 +108,9 @@ alias rsredis='ssh   root@134.213.158.44'
 alias rsmarvin='ssh   root@134.213.157.24'
 alias rssonny='ssh   root@134.213.60.5'
 alias rsbender='ssh   root@134.213.148.84'
+
+alias gvim='/Applications/MacVim.app/Contents/MacOS/Vim -g'
+
 #export PATH="~/dotfiles/.tmuxifier/bin:$PATH"
 #eval "$(tmuxifier init -)"
 
@@ -150,3 +157,5 @@ alias r='rails'
 eval "$(thefuck --alias)"
 
 export PATH=/Applications/MAMP/bin/php/php5.6.10/bin:$PATH
+#export PATH="/usr/local/opt/elasticsearch@2.4/bin:$PATH"
+export PATH="/usr/local/opt/curl/bin:$PATH"

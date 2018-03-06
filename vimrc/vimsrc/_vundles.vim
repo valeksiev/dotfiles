@@ -4,7 +4,7 @@ set rtp+=~/.vim/bundle/vundle/
 call vundle#rc()
 
 " let Vundle manage Vundle
-" required! 
+" required!
 Bundle 'gmarik/vundle'
 
 Bundle 'scrooloose/nerdtree'
@@ -13,6 +13,7 @@ Bundle 'briancollins/vim-jst'
 Bundle 'tpope/vim-rails'
 Bundle 'vim-scripts/eruby.vim'
 Bundle 'Shougo/neocomplcache'
+"Bundle 'Valloric/YouCompleteMe'
 Bundle 'kchmck/vim-coffee-script'
 Bundle 'flazz/vim-colorschemes'
 Bundle 'noahfrederick/vim-hemisu'
@@ -37,5 +38,12 @@ Bundle 'benmills/vimux'
 Bundle 'kien/ctrlp.vim'
 Bundle 'dyng/ctrlsf.vim'
 Bundle 'StanAngeloff/php.vim'
+Bundle 'digitaltoad/vim-pug'
+Bundle 'airblade/vim-gitgutter'
+Bundle 'ntpeters/vim-better-whitespace'
+Bundle 'stephpy/vim-yaml'
+Bundle 'leafgarland/typescript-vim'
+Bundle 'HerringtonDarkholme/yats'
+Plugin 'JamshedVesuna/vim-markdown-preview'
 
 filetype plugin indent on

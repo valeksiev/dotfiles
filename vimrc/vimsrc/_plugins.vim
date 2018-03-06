@@ -72,3 +72,11 @@ let g:neocomplcache_omni_patterns.cpp = '\h\w*\%(\.\|->\)\h\w*\|\h\w*::'
 " Loading helper function used into the snippets itself.
 let g:snippets_dir = expand($VIMHOME.'/snippets/')
 let g:snips_author = 'Vladimir Aleksiev'
+
+" -----------------------------------------------------------------------------
+"  " Plugin: Markdown preview
+"  "
+"  -----------------------------------------------------------------------------
+let vim_markdown_preview_hotkey='<C-P>'
+let vim_markdown_preview_browser='Google Chrome'
+let vim_markdown_preview_github=1
