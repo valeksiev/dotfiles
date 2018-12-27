@@ -5,45 +5,45 @@ call vundle#rc()
 
 " let Vundle manage Vundle
 " required!
-Bundle 'gmarik/vundle'
+Plugin 'gmarik/vundle'
 
 " UTILS
 " nerd tree for file browsing
-Bundle 'scrooloose/nerdtree'
+Plugin 'scrooloose/nerdtree'
 " colors
-Bundle 'flazz/vim-colorschemes'
-Bundle 'noahfrederick/vim-hemisu'
+Plugin 'flazz/vim-colorschemes'
+Plugin 'noahfrederick/vim-hemisu'
 " smart comments - Leader + ci
-Bundle 'scrooloose/nerdcommenter'
+Plugin 'scrooloose/nerdcommenter'
 " tabuarize /symbol
-Bundle 'godlygeek/tabular'
+Plugin 'godlygeek/tabular'
 " Smart substitutions
-Bundle 'tpope/vim-abolish'
+Plugin 'tpope/vim-abolish'
 " Open files quickly
-Bundle 'kien/ctrlp.vim'
+Plugin 'kien/ctrlp.vim'
 " Git
-Bundle 'airblade/vim-gitgutter'
+Plugin 'airblade/vim-gitgutter'
 " Snippets
 
 " StripWhiteSpace
-Bundle 'ntpeters/vim-better-whitespace'
+Plugin 'ntpeters/vim-better-whitespace'
 
 " LANGS
 " JavaScript
-Bundle 'pangloss/vim-javascript'
+Plugin 'pangloss/vim-javascript'
 " Ruby/Rails
-Bundle 'tpope/vim-rails'
-Bundle 'vim-scripts/eruby.vim'
-Bundle 'thoughtbot/vim-rspec'
+Plugin 'tpope/vim-rails'
+Plugin 'vim-scripts/eruby.vim'
+Plugin 'thoughtbot/vim-rspec'
 " HTML
-Bundle 'gregsexton/MatchTag'
-Bundle 'tpope/vim-endwise'
-Bundle 'vim-scripts/closetag.vim'
-Bundle 'othree/xml.vim'
+Plugin 'gregsexton/MatchTag'
+Plugin 'tpope/vim-endwise'
+Plugin 'vim-scripts/closetag.vim'
+Plugin 'othree/xml.vim'
 " PHP
-Bundle 'StanAngeloff/php.vim'
+Plugin 'StanAngeloff/php.vim'
 " YAML
-Bundle 'stephpy/vim-yaml'
+Plugin 'stephpy/vim-yaml'
 " Markdown
 Plugin 'JamshedVesuna/vim-markdown-preview'
 
