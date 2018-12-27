@@ -41,11 +41,11 @@ alias tmux="TERM=screen-256color-bce tmux"
 # Which plugins would you like to load? (plugins can be found in ~/.oh-my-zsh/plugins/*)
 # Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
-plugins=(git virtualenv svn svn-fast-info chucknorris)
+plugins=(git virtualenv svn svn-fast-info)
 
 source $ZSH/oh-my-zsh.sh
 
-source /usr/local/var/rbenv/versions/2.2.1/lib/ruby/gems/2.2.0/gems/tmuxinator-0.9.0/completion/tmuxinator.zsh
+source /Library/Ruby/Gems/2.3.0/gems/tmuxinator-0.10.1/completion/tmuxinator.zsh
 
 # Customize to your needs...
 [[ -s "$HOME/.rvm/scripts/rvm" ]] && . "$HOME/.rvm/scripts/rvm"
@@ -153,9 +153,17 @@ function rbenvsudo(){
 alias uni='cd /Volumes/Macintosh\ HD/backup/projects/UNI'
 alias be='bundle exec '
 alias r='rails'
-
-eval "$(thefuck --alias)"
+alias pu='./vendor/bin/phpunit'
+alias bh='./vendor/bin/behat --format progress'
+alias sc='./bin/console'
+alias dk='docker kill'
 
 export PATH=/Applications/MAMP/bin/php/php5.6.10/bin:$PATH
 #export PATH="/usr/local/opt/elasticsearch@2.4/bin:$PATH"
 export PATH="/usr/local/opt/curl/bin:$PATH"
+export PATH="/usr/local/opt/redis@3.2/bin:$PATH"
+export PATH="/Users/vlad/Library/Python/2.7/bin:$PATH"
+export PATH="/Applications/OBD GPS Logger.app/Contents/Resources/bin:$PATH"
+export PATH="/usr/local/opt/php@7.1/bin:$PATH"
+export PATH="/usr/local/opt/php@7.1/sbin:$PATH"
+export PATH="/Users/vlad/.composer/vendor/bin:$PATH"
