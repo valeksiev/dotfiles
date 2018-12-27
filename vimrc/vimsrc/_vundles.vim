@@ -24,8 +24,7 @@ Bundle 'kien/ctrlp.vim'
 " Git
 Bundle 'airblade/vim-gitgutter'
 " Snippets
-Bundle 'msanders/snipmate.vim'
-Bundle 'honza/vim-snippets'
+
 " StripWhiteSpace
 Bundle 'ntpeters/vim-better-whitespace'
 
@@ -47,10 +46,5 @@ Bundle 'StanAngeloff/php.vim'
 Bundle 'stephpy/vim-yaml'
 " Markdown
 Plugin 'JamshedVesuna/vim-markdown-preview'
-
-Bundle 'Shougo/neocomplcache'
-Bundle 'tpope/vim-dispatch'
-Bundle 'jgdavey/tslime.vim'
-Bundle 'benmills/vimux'
 
 filetype plugin indent on
