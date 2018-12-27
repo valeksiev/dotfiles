@@ -7,43 +7,50 @@ call vundle#rc()
 " required!
 Bundle 'gmarik/vundle'
 
+" UTILS
+" nerd tree for file browsing
 Bundle 'scrooloose/nerdtree'
-Bundle 'pangloss/vim-javascript'
-Bundle 'briancollins/vim-jst'
-Bundle 'tpope/vim-rails'
-Bundle 'vim-scripts/eruby.vim'
-Bundle 'Shougo/neocomplcache'
-"Bundle 'Valloric/YouCompleteMe'
-Bundle 'kchmck/vim-coffee-script'
+" colors
 Bundle 'flazz/vim-colorschemes'
 Bundle 'noahfrederick/vim-hemisu'
+" smart comments - Leader + ci
+Bundle 'scrooloose/nerdcommenter'
+" tabuarize /symbol
+Bundle 'godlygeek/tabular'
+" Smart substitutions
+Bundle 'tpope/vim-abolish'
+" Open files quickly
+Bundle 'kien/ctrlp.vim'
+" Git
+Bundle 'airblade/vim-gitgutter'
+" Snippets
+Bundle 'msanders/snipmate.vim'
+Bundle 'honza/vim-snippets'
+" StripWhiteSpace
+Bundle 'ntpeters/vim-better-whitespace'
+
+" LANGS
+" JavaScript
+Bundle 'pangloss/vim-javascript'
+" Ruby/Rails
+Bundle 'tpope/vim-rails'
+Bundle 'vim-scripts/eruby.vim'
+Bundle 'thoughtbot/vim-rspec'
+" HTML
 Bundle 'gregsexton/MatchTag'
 Bundle 'tpope/vim-endwise'
 Bundle 'vim-scripts/closetag.vim'
-Bundle 'honza/vim-snippets'
-Bundle 'vim-scripts/HTML-AutoCloseTag'
-Bundle 'msanders/snipmate.vim'
-Bundle 'scrooloose/nerdcommenter'
-Bundle 'widox/vim-buffer-explorer-plugin'
-Bundle 'vim-scripts/taglist.vim'
-Bundle 'godlygeek/tabular'
-Bundle 'thoughtbot/vim-rspec'
+Bundle 'othree/xml.vim'
+" PHP
+Bundle 'StanAngeloff/php.vim'
+" YAML
+Bundle 'stephpy/vim-yaml'
+" Markdown
+Plugin 'JamshedVesuna/vim-markdown-preview'
+
+Bundle 'Shougo/neocomplcache'
 Bundle 'tpope/vim-dispatch'
 Bundle 'jgdavey/tslime.vim'
-" Bundle 'wincent/Command-T'
-Bundle 'othree/xml.vim'
-Bundle 'tpope/vim-abolish'
-Bundle 'derekwyatt/vim-scala'
 Bundle 'benmills/vimux'
-Bundle 'kien/ctrlp.vim'
-Bundle 'dyng/ctrlsf.vim'
-Bundle 'StanAngeloff/php.vim'
-Bundle 'digitaltoad/vim-pug'
-Bundle 'airblade/vim-gitgutter'
-Bundle 'ntpeters/vim-better-whitespace'
-Bundle 'stephpy/vim-yaml'
-Bundle 'leafgarland/typescript-vim'
-Bundle 'HerringtonDarkholme/yats'
-Plugin 'JamshedVesuna/vim-markdown-preview'
 
 filetype plugin indent on

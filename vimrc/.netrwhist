@@ -1,11 +1,3 @@
 let g:netrw_dirhistmax  =10
-let g:netrw_dirhist_cnt =9
-let g:netrw_dirhist_1='/Applications/MAMP/htdocs/opencart23/admin/controller/extension/extension'
-let g:netrw_dirhist_2='/usr/local/Cellar/elasticsearch17/1.7.5/config/elasticsearch'
-let g:netrw_dirhist_3='/Users/vlad/projects/perpetto/ptto.plgn/magento/perpetto-perpetto/app/code/community/Perpetto/Perpetto'
-let g:netrw_dirhist_4='/Users/vlad/projects/perpetto/ptto.srv'
-let g:netrw_dirhist_5='/Users/vlad/.tmuxinator'
-let g:netrw_dirhist_6='/Volumes/taiwannutrition/blog/wp-content/themes/betheme'
-let g:netrw_dirhist_7='/Users/vlad/projects/perpetto/ptto.srv'
-let g:netrw_dirhist_8='/Users/vlad/projects/perpetto/ptto.srv/config'
-let g:netrw_dirhist_9='/Users/vlad/projects/perpetto/ptto.srv'
+let g:netrw_dirhist_cnt =1
+let g:netrw_dirhist_1='/Users/vlad/projects/tailify/web'
