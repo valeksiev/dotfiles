@@ -24,6 +24,18 @@ Plugin 'kien/ctrlp.vim'
 " Git
 Plugin 'airblade/vim-gitgutter'
 " Snippets
+"
+"
+Plugin 'mattn/emmet-vim'
+
+" Ligntline
+Plugin 'itchyny/lightline.vim'
+
+" Linters
+Plugin 'w0rp/ale'
+
+" Lightline-Ale integration
+Plugin 'maximbaz/lightline-ale'
 
 " StripWhiteSpace
 Plugin 'ntpeters/vim-better-whitespace'
@@ -31,6 +43,7 @@ Plugin 'ntpeters/vim-better-whitespace'
 " LANGS
 " JavaScript
 Plugin 'pangloss/vim-javascript'
+Plugin 'mxw/vim-jsx'
 " Ruby/Rails
 Plugin 'tpope/vim-rails'
 Plugin 'vim-scripts/eruby.vim'
