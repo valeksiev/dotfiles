@@ -28,7 +28,7 @@ let g:ctrlp_user_command = 'ag %s -i --nocolor --nogroup --hidden
       \ -g ""'
 
 " quickly edit and reload config
-nnoremap <leader>ev :split $MYVIMRC<CR>
+nnoremap <leader>ev :split ~/.vim/vimsrc<CR>
 nnoremap <leader>sv :source $MYVIMRC<CR>
 
 

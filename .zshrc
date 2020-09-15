@@ -167,3 +167,17 @@ export PATH="/Applications/OBD GPS Logger.app/Contents/Resources/bin:$PATH"
 export PATH="/usr/local/opt/php@7.1/bin:$PATH"
 export PATH="/usr/local/opt/php@7.1/sbin:$PATH"
 export PATH="/Users/vlad/.composer/vendor/bin:$PATH"
+
+export PATH="$HOME/.yarn/bin:$HOME/.config/yarn/global/node_modules/.bin:$PATH"
+
+
+export ANDROID_HOME=$HOME/Library/Android/sdk
+export PATH=$PATH:$ANDROID_HOME/emulator
+export PATH=$PATH:$ANDROID_HOME/tools
+export PATH=$PATH:$ANDROID_HOME/tools/bin
+export PATH=$PATH:$ANDROID_HOME/platform-tools
+
+# added by travis gem
+[ -f /Users/vlad/.travis/travis.sh ] && source /Users/vlad/.travis/travis.sh
+export PATH="/usr/local/opt/node@12/bin:$PATH"
+export PATH="/usr/local/opt/tcl-tk/bin:$PATH"

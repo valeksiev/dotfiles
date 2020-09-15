@@ -36,7 +36,7 @@ set visualbell                        " No sounds
 "set autochdir                         " Change working dir to the open file
 "set list                              " show non-print characters,...
 "set listchars=trail:⋅,nbsp:⋅,tab:▷⋅   " for tabs and trailing spaces
-"set relativenumber                    " relative line numbers (>= Vim 7.3)
+set relativenumber                    " relative line numbers (>= Vim 7.3)
 
 filetype plugin indent on             " enable filetype use
 setlocal ofu=syntaxcomplete#Complete  " enable syntax based omni completion
@@ -212,6 +212,11 @@ if has("autocmd")
     autocmd BufEnter *.c   compiler gcc
     autocmd BufEnter *.cpp compiler gcc
     autocmd BufEnter *.rb  compiler ruby
+
+
+    " Tab sizes
+    autocmd FileType javascript setlocal shiftwidth=2 tabstop=2
+    autocmd FileType php setlocal shiftwidth=4 tabstop=4
 
     " Syntax highlight for files that don't end with *.rb extension - Adding
     " syntax = ruby

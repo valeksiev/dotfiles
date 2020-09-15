@@ -5,20 +5,14 @@ autocmd FileType javascript setlocal omnifunc=javascriptcomplete#CompleteJS
 autocmd FileType python setlocal omnifunc=pythoncomplete#Complete
 autocmd FileType xml setlocal omnifunc=xmlcomplete#CompleteTags
 
-" -----------------------------------------------------------------------------
-"  " Plugin: Markdown preview
-"  "
-"  -----------------------------------------------------------------------------
-let vim_markdown_preview_hotkey='<C-P>'
-let vim_markdown_preview_browser='Google Chrome'
-let vim_markdown_preview_github=1
-
+let NERDTreeShowHidden=1
 " -----------------------------------------------------------------------------
 "  " Plugin: Better WhiteSpace
 "  "
 "  -----------------------------------------------------------------------------
 let g:better_whitespace_enabled=1
 let g:strip_whitespace_on_save=1
+let g:strip_whitespace_confirm=0
 
 " -----------------------------------------------------------------------------
 "  " Plugin: Markdown preview
@@ -36,10 +30,19 @@ let vim_markdown_preview_github=1
 set noshowmode
 
 " -----------------------------------------------------------------------------
-"  " Plugin: Lightline
+"  " Plugin: ALE
 "  "
 "  -----------------------------------------------------------------------------
-let b:ale_linters = {'javascript': ['eslint']}
+let g:ale_linters = {
+    \ 'javascript': ['eslint'],
+    \ 'php': ['phpcs'],
+    \ 'graphql': []
+  \ }
+nmap <silent> <leader>j :ALENext<cr>
+nmap <silent> <leader>k :ALEPrevious<cr>
+let g:ale_php_phpcs_standard = 'PSR2'
+let g:php_phpcs_standard = 'PSR2'
+
 " -----------------------------------------------------------------------------
 "  " plugin: lightline ale
 "  "
@@ -77,3 +80,22 @@ let g:user_emmet_settings = {
     \      'extends' : 'jsx',
     \  },
   \}
+
+" -----------------------------------------------------------------------------
+"  " plugin: UltiSnips
+"  "
+"  -----------------------------------------------------------------------------
+let g:UltiSnipsExpandTrigger='<tab>'
+let g:UltiSnipsJumpForwardTrigger='<c-b>'
+let g:UltiSnipsJumpBackwardTrigger='<c-z>'
+" If you want :UltiSnipsEdit to split your window.
+let g:UltiSnipsEditSplit="vertical"
+
+
+" -----------------------------------------------------------------------------
+"  " plugin: Prettier
+"  "
+"  -----------------------------------------------------------------------------
+" when running at every change you may want to disable quickfix
+let g:prettier#autoformat = 0
+autocmd BufWritePre *.js,*.jsx,*.mjs,*.ts,*.tsx,*.css,*.less,*.scss,*.json,*.graphql,*.md,*.vue,*.yaml,*.html Prettier
