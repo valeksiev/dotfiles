@@ -1,5 +1,5 @@
 # Path to your oh-my-zsh configuration.
-ZSH=$HOME/dotfiles/.oh-my-zsh
+ZSH=$HOME/.oh-my-zsh
 
 # Set name of the theme to load.
 # Look in ~/.oh-my-zsh/themes/
@@ -45,15 +45,13 @@ plugins=(git virtualenv svn svn-fast-info)
 
 source $ZSH/oh-my-zsh.sh
 
-source /Library/Ruby/Gems/2.3.0/gems/tmuxinator-0.10.1/completion/tmuxinator.zsh
-
 # Customize to your needs...
 [[ -s "$HOME/.rvm/scripts/rvm" ]] && . "$HOME/.rvm/scripts/rvm"
 
 export EDITOR=vim
 alias pr='cd ~/projects'
+alias ft='cd ~/projects/ft'
 alias edhub='cd ~/projects/edhub'
-alias reload=ll
 
 alias adm='cd ~/projects/edhub/edhub.adm'
 alias adms='adm && rails s'
@@ -181,3 +179,26 @@ export PATH=$PATH:$ANDROID_HOME/platform-tools
 [ -f /Users/vlad/.travis/travis.sh ] && source /Users/vlad/.travis/travis.sh
 export PATH="/usr/local/opt/node@12/bin:$PATH"
 export PATH="/usr/local/opt/tcl-tk/bin:$PATH"
+
+export PATH=$PATH:node_modules/.bin
+
+export NVM_DIR="$HOME/.nvm"
+[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
+[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
+
+
+# Set the Vault cluster address.
+export VAULT_ADDR=https://vault.in.ft.com
+
+# Set the personal access token to use for authentication with Vault.
+export VAULT_AUTH_GITHUB_TOKEN=$(security find-generic-password -a "${USER}" -s "FT Vault" -w)
+
+# Prevent `vault write` commands from being stored in history.
+function vault () {
+  command vault "$@"
+  if [[ $1 == write ]]; then history -d $((HISTCMD-1)) &> /dev/null; fi
+}
+
+alias python=/usr/local/bin/python3
+
+export PATH="/usr/local/bin:$PATH"

@@ -1,9 +1,11 @@
 " -----------------------------------------------------------------------------
 " Settings
 " -----------------------------------------------------------------------------
+set spell spelllang=en_gb
+set complete+=kspell
 set encoding=utf-8
 set fileencodings=utf-8               " encoding always must be utf-8
-set fileformats=unix,dos              " Setting file format try first unix
+set fileformats=unix                  " Setting file format try first unix
 set nocompatible                      " don't try to be strictly vi-like
 set modelines=1                       " for now use it //don't use modelines (for security)
 set viminfo='20,\"50                  " use a viminfo file,...
@@ -40,6 +42,8 @@ set relativenumber                    " relative line numbers (>= Vim 7.3)
 
 filetype plugin indent on             " enable filetype use
 setlocal ofu=syntaxcomplete#Complete  " enable syntax based omni completion
+
+autocmd FileType YAML setlocal nospell
 
 " -----------------------------------------------------------------------------
 " Hacks
@@ -243,6 +247,7 @@ if has("autocmd")
 
     " Custom filetypes settings: Python, Shell, JSON, Vagrant, CloudFormation
     au FileType python,sh set tabstop=4 shiftwidth=4 softtabstop=4
+    au FileType javascriptreact set shiftwidth=2 tabstop=2
     au BufRead,BufNewFile *.json setfiletype javascript
     au BufRead,BufNewFile Vagrantfile setfiletype ruby
     "au BufRead,BufNewFile *.template setfiletype javascript

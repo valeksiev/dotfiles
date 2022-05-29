@@ -3,12 +3,15 @@ filetype off                   " required!
 set rtp+=~/.vim/bundle/vundle/
 call vundle#rc()
 
-Plugin 'mxw/vim-prolog'
 " let Vundle manage Vundle
 " required!
 Plugin 'gmarik/vundle'
 
+Plugin 'soli/prolog-vim'
+
 " UTILS
+" editor config
+Plugin 'editorconfig/editorconfig-vim'
 " nerd tree for file browsing
 Plugin 'scrooloose/nerdtree'
 " colors
@@ -48,7 +51,7 @@ Plugin 'jparise/vim-graphql'
 Plugin 'wavded/vim-stylus'
 " JavaScript
 Plugin 'pangloss/vim-javascript'
-Plugin 'mxw/vim-jsx'
+Plugin 'MaxMEllon/vim-jsx-pretty'
 Plugin 'joaohkfaria/vim-jest-snippets'
 Plugin 'prettier/vim-prettier'
 " Ruby/Rails
@@ -65,5 +68,7 @@ Plugin 'StanAngeloff/php.vim'
 Plugin 'stephpy/vim-yaml'
 " Markdown
 Plugin 'JamshedVesuna/vim-markdown-preview'
+
+Plugin 'lepture/vim-jinja'
 
 filetype plugin indent on

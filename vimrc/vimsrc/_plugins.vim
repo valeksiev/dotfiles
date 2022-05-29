@@ -34,14 +34,20 @@ set noshowmode
 "  "
 "  -----------------------------------------------------------------------------
 let g:ale_linters = {
-    \ 'javascript': ['eslint'],
+    \ 'javascript': ['eslint', 'prettier'],
     \ 'php': ['phpcs'],
     \ 'graphql': []
-  \ }
+  \}
+" let g:ale_fixers = {
+"     \ 'javascript': ['prettier'],
+"     \ 'css': ['prettier'],
+"   \}
 nmap <silent> <leader>j :ALENext<cr>
 nmap <silent> <leader>k :ALEPrevious<cr>
 let g:ale_php_phpcs_standard = 'PSR2'
 let g:php_phpcs_standard = 'PSR2'
+" let g:ale_fix_on_save = 1
+" let g:ale_javascript_prettier_options = '--end-of-line lf'
 
 " -----------------------------------------------------------------------------
 "  " plugin: lightline ale
@@ -97,5 +103,6 @@ let g:UltiSnipsEditSplit="vertical"
 "  "
 "  -----------------------------------------------------------------------------
 " when running at every change you may want to disable quickfix
-let g:prettier#autoformat = 0
-autocmd BufWritePre *.js,*.jsx,*.mjs,*.ts,*.tsx,*.css,*.less,*.scss,*.json,*.graphql,*.md,*.vue,*.yaml,*.html Prettier
+" let g:prettier#autoformat = 0
+" autocmd BufWritePre *.js,*.jsx,*.mjs,*.ts,*.tsx,*.css,*.less,*.scss,*.json,*.graphql,*.md,*.vue,*.yaml,*.html Prettier
+
