@@ -1,5 +1,7 @@
-vimrc/backups
-vimrc/tmp
+vimrc/backups/*
+vimrc/tmp/*
+!vimrc/tmp/.keep
+!vimrc/backups/.keep
 vimrc/bundle
 .DS_Store
 
