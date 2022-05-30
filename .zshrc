@@ -186,19 +186,6 @@ export NVM_DIR="$HOME/.nvm"
 [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
 [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
 
-
-# Set the Vault cluster address.
-export VAULT_ADDR=https://vault.in.ft.com
-
-# Set the personal access token to use for authentication with Vault.
-export VAULT_AUTH_GITHUB_TOKEN=$(security find-generic-password -a "${USER}" -s "FT Vault" -w)
-
-# Prevent `vault write` commands from being stored in history.
-function vault () {
-  command vault "$@"
-  if [[ $1 == write ]]; then history -d $((HISTCMD-1)) &> /dev/null; fi
-}
-
 alias python=/usr/local/bin/python3
 
 export PATH="/usr/local/bin:$PATH"
